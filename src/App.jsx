@@ -1,8 +1,11 @@
  import React from 'react'
+import { Button } from './components/ui/button'
  
  const App = () => {
    return (
-     <div>App</div>
+     <div>
+      <Button variant='destractive'>LOGIN </Button>
+     </div>
    )
  }
  

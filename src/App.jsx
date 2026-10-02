@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "./components/ui/button";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/ui/Header";
@@ -10,26 +9,31 @@ import Job from "./pages/Job";
 import MyJobs from "./pages/MyJobs";
 import PostJobs from "./pages/PostJobs";
 import SavedJobs from "./pages/SavedJobs";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Header />
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="grid-background"></div>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/onboarding" element={ <OnBoarding /> } />
-          <Route path="/job" element={<Job />} />
-          <Route path="/postjobs" element={<PostJobs />} />
-          <Route path="/myjobs" element={<MyJobs />} />
-          <Route path="/savedjobs" element={<SavedJobs />} />
-          <Route path="/joblisting" element={<JobListing />} />
-        </Routes>
+      <div className="relative z-10">
+        <BrowserRouter>
+          <Header />
 
-        <Footer />
-      </BrowserRouter>
-    </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/onboarding" element={<OnBoarding />} />
+            <Route path="/job/:id" element={<Job />} />
+            <Route path="/postjobs" element={<PostJobs />} />
+            <Route path="/myjobs" element={<MyJobs />} />
+            <Route path="/savedjobs" element={<SavedJobs />} />
+            <Route path="/joblisting" element={<JobListing />} />
+          </Routes>
+
+          <Footer />
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 };
 
